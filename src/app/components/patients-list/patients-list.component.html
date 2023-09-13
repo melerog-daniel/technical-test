@@ -1,0 +1,9 @@
+<h1>Patients List</h1>
+    <ul>
+      <li *ngFor="let patient of patientList$">
+        <p>Name: {{patient.resource.name[0].given.join(' ')}}</p>
+        <p>Lastname: <b>{{patient.resource.name[0].family | uppercase}}</b></p>
+        <p *ngIf='patient.resource.birthDate'>Date of birth: {{patient.resource.birthDate | date:'longDate' }}</p>
+        <p *ngIf='patient.resource.gender'>Gender: {{patient.resource.gender | titlecase}}</p>
+      </li>
+    </ul>
