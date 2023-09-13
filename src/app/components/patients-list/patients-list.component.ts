@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from 'src/app/services/patient.service';
-import { Observable, of } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-patients-list',
@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 export class PatientsListComponent implements OnInit{
 
   patientList$ : any[] = [];
+  private unSubscribe$ = new Subject<void>();
 
   constructor(private patientService: PatientService){}
 
@@ -19,5 +20,10 @@ export class PatientsListComponent implements OnInit{
 
   getPatientList(): void{
     this.patientService.getPatientList().subscribe((data) => this.patientList$ = data);
+  }
+
+  ngOnDestroy(): void {
+    this.unSubscribe$.next();
+    this.unSubscribe$.complete();
   }
 }

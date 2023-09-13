@@ -6,15 +6,20 @@ import { AppComponent } from './app.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CardModule } from 'primeng/card';
+import { PatientCardClickableDirective } from './directives/patient-card-clickable.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
-    PatientsListComponent
+    PatientsListComponent,
+    PatientCardClickableDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
