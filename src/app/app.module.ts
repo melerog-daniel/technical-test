@@ -7,19 +7,23 @@ import { PatientsListComponent } from './components/patients-list/patients-list.
 import { HttpClientModule } from '@angular/common/http';
 
 import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 import { PatientCardClickableDirective } from './directives/patient-card-clickable.directive';
+import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientsListComponent,
     PatientCardClickableDirective,
+    PatientDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CardModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

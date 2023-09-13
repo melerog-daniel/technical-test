@@ -16,4 +16,9 @@ export class PatientService {
       map((response: any) => response.entry)
     );
   }
+
+  getPatientById(id: string): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
 }
