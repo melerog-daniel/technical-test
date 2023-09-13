@@ -7,18 +7,18 @@ import { Subject } from 'rxjs';
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.css']
 })
-export class PatientsListComponent implements OnInit{
+export class PatientsListComponent implements OnInit {
 
-  patientList$ : any[] = [];
+  patientList$: any[] = [];
   private unSubscribe$ = new Subject<void>();
 
-  constructor(private patientService: PatientService){}
+  constructor(private patientService: PatientService) { }
 
   ngOnInit(): void {
-      this.getPatientList();
+    this.getPatientList();
   }
 
-  getPatientList(): void{
+  getPatientList(): void {
     this.patientService.getPatientList().subscribe((data) => this.patientList$ = data);
   }
 

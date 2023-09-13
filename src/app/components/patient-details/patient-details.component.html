@@ -1,47 +1,100 @@
+<p-button icon="pi pi-times" label="Back to patients list" type="submit"
+    styleClass="p-button-lg p-button-outlined p-button-secondary" [style]="{ margin: '20px'}"
+    (click)="backToPatientList()"></p-button>
 
-<p-button label="Back to patients list" type="submit"
-(click)="backToPatientList()"></p-button>
+<div class="flex-container">
 
-<div *ngIf="patient$">
-    <h1>Patient details</h1>
-    <p><b>Id:</b> {{patient$.id}}</p>
-    <p><b>Lastname:</b> {{patient$.name[0].family}}</p>
-    <p><b>Name:</b> {{patient$.name[0].given.join(' ')}}</p>
-    <p *ngIf='patient$.birthDate'><b>Birth date:</b> {{patient$.birthDate | date:'longDate' }}</p>
-    <p *ngIf='patient$.gender'><b>Gender:</b> {{patient$.gender | titlecase}}</p>
+    <div *ngIf="patient$">
 
-
-    <br/><div *ngIf="patient$.identifier">
-        <div *ngFor="let identifier of patient$.identifier; index as i">
-            <app-patient-details-identifier [identifier]="identifier" [index]=i></app-patient-details-identifier><br/>
+        <div class="flex-container">
+            <h1>Patient details</h1>
         </div>
-    </div>
 
-    <br/><div *ngIf="patient$.address">
-        <div *ngFor="let address of patient$.address; index as i">
-            <app-patient-details-address [address]="address" [index]=i></app-patient-details-address><br/>
+        <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}">
+            <p-card>
+                <p><b>Id:</b> {{patient$.id}}</p>
+                <p><b>Lastname:</b> {{patient$.name[0].family}}</p>
+                <p><b>Name:</b> {{patient$.name[0].given.join(' ')}}</p>
+                <p *ngIf='patient$.birthDate'><b>Birth date:</b> {{patient$.birthDate | date:'longDate' }}</p>
+                <p *ngIf='patient$.gender'><b>Gender:</b> {{patient$.gender | titlecase}}</p>
+            </p-card>
         </div>
-    </div>
 
-    <br/><div *ngIf="patient$.maritalStatus">
-        <b>Marital status:</b>
-        <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].code"><b>Code:</b> {{patient$.maritalStatus.coding[0].code}}</p>
-        <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].display"><b>Status:</b> {{patient$.maritalStatus.coding[0].display}}</p>
-    </div>
+        <br />
+        <div *ngIf="patient$.identifier">
+            <div class="flex-container">
+                <h3>Identifiers:</h3>
+            </div>
+            <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}" *ngFor="let identifier of patient$.identifier; index as i">
+                <p-card>
+                    <app-patient-details-identifier [identifier]="identifier"
+                        [index]=i></app-patient-details-identifier><br />
+                </p-card>
 
-    <br/><div *ngIf="patient$.telecom">
-        <div *ngFor="let telecom of patient$.telecom; index as i">
-            <app-patient-details-patient-telecom [telecom]="telecom" [index]=i></app-patient-details-patient-telecom><br/>
+
+            </div>
         </div>
-    </div>
 
-    <br/><div *ngIf="patient$.contact">
-        <div *ngFor="let contact of patient$.contact; index as i">
-            <app-patient-details-contact [contact]="contact" [index]=i></app-patient-details-contact>
-            
+        <br />
+        <div *ngIf="patient$.address">
+            <div class="flex-container">
+                <h3>Addresses:</h3>
+            </div>
+            <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}" *ngFor="let address of patient$.address; index as i">
+                <p-card>
+                    <app-patient-details-address [address]="address" [index]=i></app-patient-details-address><br />
+                </p-card>
+            </div>
         </div>
-    </div>
 
-    
-    
+        <br />
+        <div *ngIf="patient$.maritalStatus">
+            <div class="flex-container">
+                <h3>Marital status:</h3>
+            </div>
+            <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}">
+                <p-card>
+                    <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].code"><b>Code:</b>
+                        {{patient$.maritalStatus.coding[0].code}}</p>
+                    <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].display"><b>Status:</b>
+                        {{patient$.maritalStatus.coding[0].display}}</p>
+                </p-card>
+            </div>
+
+        </div>
+
+        <br />
+        <div *ngIf="patient$.telecom">
+            <div class="flex-container">
+                <h3>Patient telecommunication:</h3>
+            </div>
+            <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}" *ngFor="let telecom of patient$.telecom; index as i">
+                <p-card>
+                    <app-patient-details-patient-telecom [telecom]="telecom"
+                        [index]=i></app-patient-details-patient-telecom><br />
+                </p-card>
+            </div>
+        </div>
+
+        <br />
+        <div *ngIf="patient$.contact">
+            <div class="flex-container">
+                <h3>Contact:</h3>
+            </div>
+            <div class="card flex justify-content-center details-card" [style]="{ 'margin-top': '20px', 
+            borderRadius: '5px'}" *ngFor="let contact of patient$.contact; index as i">
+                <p-card>
+                    <app-patient-details-contact [contact]="contact" [index]=i></app-patient-details-contact>
+                </p-card>
+            </div>
+        </div>
+
+
+
+    </div>
 </div>

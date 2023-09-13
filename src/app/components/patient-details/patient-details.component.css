@@ -1,0 +1,18 @@
+.flex-container{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 50px; 
+}
+
+.details-card{
+    box-shadow: 1px 1px 20px 5px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 1px 1px 20px 5px rgba(0,0,0,0.68); 
+    -moz-box-shadow: 1px 1px 20px 5px rgba(0,0,0,0.68);
+}

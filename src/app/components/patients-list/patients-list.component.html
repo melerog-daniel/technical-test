@@ -1,22 +1,22 @@
+<div class="flex-container">
+    <h1>Patients List</h1>
+</div>
+<div class="flex-container">
+    <p><b>Click on each card to see more details about the patient</b></p>
+</div>
 
-    <div class="flex-container"><h1>Patients List</h1></div>
-    <div class="flex-container"><p><b>Click on each card to see more details about the patient</b></p></div>
+<div class="patients-list">
 
-    <div class="patients-list">
-        
-        <div *ngFor="let patient of patientList$" appPatientCardClickable [id]="patient.resource.id"
-            class="card flex justify-content-center patient-card" 
-            [style]="{ margin: '5px', 
+    <div *ngFor="let patient of patientList$" appPatientCardClickable [id]="patient.resource.id"
+        class="card flex justify-content-center patient-card" [style]="{ margin: '5px', 
             borderRadius: '5px', 
             width: '50%',
-            height: 'min-content'}" >
-            <p-card header="{{patient.resource.name[0].family | uppercase}}"
-                    subheader="{{patient.resource.name[0].given.join(' ')}}">
-                <p *ngIf='patient.resource.birthDate'><b>Birth date:</b> {{patient.resource.birthDate | date:'longDate' }}</p>
-                <p *ngIf='patient.resource.gender'><b>Gender:</b> {{patient.resource.gender | titlecase}}</p>
-            </p-card>
-        </div>
+            height: 'min-content'}">
+        <p-card header="{{patient.resource.name[0].family | uppercase}}"
+            subheader="{{patient.resource.name[0].given.join(' ')}}">
+            <p *ngIf='patient.resource.birthDate'><b>Birth date:</b> {{patient.resource.birthDate | date:'longDate' }}
+            </p>
+            <p *ngIf='patient.resource.gender'><b>Gender:</b> {{patient.resource.gender | titlecase}}</p>
+        </p-card>
     </div>
-
-    
-    
+</div>
