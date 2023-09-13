@@ -10,56 +10,35 @@
     <p *ngIf='patient$.birthDate'><b>Birth date:</b> {{patient$.birthDate | date:'longDate' }}</p>
     <p *ngIf='patient$.gender'><b>Gender:</b> {{patient$.gender | titlecase}}</p>
 
+
     <br/><div *ngIf="patient$.identifier">
-        
         <div *ngFor="let identifier of patient$.identifier; index as i">
-            <br/>
-            <b>Identifier {{i+1}}:</b>
-            <p *ngIf="identifier.type && identifier.type.coding"><b>Type:</b> {{identifier.type.coding[0].code}}</p>
-            <p *ngIf="identifier.value"><b>Value:</b> {{identifier.value}}</p>
-            <p *ngIf="identifier.type && identifier.type.text"><b>Identifier name:</b> {{identifier.type.text}}</p>
+            <app-patient-details-identifier [identifier]="identifier" [index]=i></app-patient-details-identifier><br/>
         </div>
     </div>
 
     <br/><div *ngIf="patient$.address">
         <div *ngFor="let address of patient$.address; index as i">
-            <b>Address {{i+1}}:</b>
-            <p *ngIf="address.use"><b>Use:</b> {{address.use}}</p>
-            <p *ngIf="address.line"><b>Line:</b> {{address.line[0]}}</p>
-            <p *ngIf="address.city"><b>City:</b> {{address.city}}</p>
-            <p *ngIf="address.state"><b>State:</b> {{address.state}}</p>
-            <p *ngIf="address.postalCode"><b>Postal code:</b> {{address.postalCode}}</p>
-            <p *ngIf="address.country"><b>Country:</b> {{address.country}}</p>
+            <app-patient-details-address [address]="address" [index]=i></app-patient-details-address><br/>
         </div>
     </div>
 
     <br/><div *ngIf="patient$.maritalStatus">
         <b>Marital status:</b>
-        <p><b>Code:</b> {{patient$.maritalStatus.coding[0].code}}</p>
-        <p><b>Status:</b> {{patient$.maritalStatus.coding[0].display}}</p>
+        <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].code"><b>Code:</b> {{patient$.maritalStatus.coding[0].code}}</p>
+        <p *ngIf="patient$.maritalStatus.coding && patient$.maritalStatus.coding[0].display"><b>Status:</b> {{patient$.maritalStatus.coding[0].display}}</p>
     </div>
 
     <br/><div *ngIf="patient$.telecom">
         <div *ngFor="let telecom of patient$.telecom; index as i">
-            <b>Patient telecommunication {{i+1}}:</b>
-            <p *ngIf="telecom.system"><b>System:</b> {{telecom.system}}</p>
-            <p *ngIf="telecom.value"><b>Value:</b> {{telecom.value}}</p>
-            <p *ngIf="telecom.use"><b>Use:</b> {{telecom.use}}</p>
+            <app-patient-details-patient-telecom [telecom]="telecom" [index]=i></app-patient-details-patient-telecom><br/>
         </div>
     </div>
 
     <br/><div *ngIf="patient$.contact">
         <div *ngFor="let contact of patient$.contact; index as i">
-            <b>Contact {{i+1}}:</b>
-            <p *ngIf="contact.relationship && contact.relationship[0].text"><b>Relationship:</b> {{contact.relationship[0].text}}</p>
-            <p *ngIf="contact.name.family"><b>Lastname:</b> {{contact.name.family}}</p>
-            <p *ngIf="contact.name.given"><b>Name:</b> {{contact.name.given.join('')}}</p>
-            <div *ngFor="let telecom of contact.telecom; index as j">
-                <b>Contact {{i+1}} telecommunication {{j+1}}:</b>
-                <p *ngIf="telecom.system"><b>System:</b> {{telecom.system}}</p>
-                <p *ngIf="telecom.value"><b>Value:</b> {{telecom.value}}</p>
-                <p *ngIf="telecom.use"><b>Use:</b> {{telecom.use}}</p>
-            </div>
+            <app-patient-details-contact [contact]="contact" [index]=i></app-patient-details-contact>
+            
         </div>
     </div>
 
