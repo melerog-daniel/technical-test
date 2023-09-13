@@ -1,0 +1,9 @@
+<div>
+    <b>Address {{index+1}}</b>
+    <p *ngIf="address.use"><b>Use:</b> {{address.use}}</p>
+    <p *ngIf="address.line"><b>Line:</b> {{address.line[0]}}</p>
+    <p *ngIf="address.city"><b>City:</b> {{address.city}}</p>
+    <p *ngIf="address.state"><b>State:</b> {{address.state}}</p>
+    <p *ngIf="address.postalCode"><b>Postal code:</b> {{address.postalCode}}</p>
+    <p *ngIf="address.country"><b>Country:</b> {{address.country}}</p>
+</div>

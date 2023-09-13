@@ -1,0 +1,6 @@
+<div>
+    <b>Identifier {{index+1}}</b>
+    <p *ngIf="identifier.type && identifier.type.coding"><b>Type:</b> {{identifier.type.coding[0].code}}</p>
+    <p *ngIf="identifier.value"><b>Value:</b> {{identifier.value}}</p>
+    <p *ngIf="identifier.type && identifier.type.text"><b>Identifier name:</b> {{identifier.type.text}}</p>
+</div>
