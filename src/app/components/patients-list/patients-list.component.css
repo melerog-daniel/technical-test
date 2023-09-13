@@ -1,0 +1,27 @@
+.flex-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 50px; 
+}
+
+.patients-list{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-card{
+    cursor: pointer;
+    box-shadow: 8px 2px 2px 5px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 8px 2px 32px 5px rgba(0,0,0,0.68); 
+    -moz-box-shadow: 8px 2px 32px 5px rgba(0,0,0,0.68);
+}
